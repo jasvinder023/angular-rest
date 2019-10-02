@@ -22,7 +22,6 @@
       </tr>
     </thead>
     <tbody>
-      <!--   for (Todo todo: todos) {  -->
               <tr *ngFor="let employee of employees">
                 <td>{{employee.firstName}}</td>
                 <td>{{employee.lastName}}</td>
@@ -34,7 +33,7 @@
                 
                 <td ><button (click)="updateEmployee(employee.empId)" class="btn btn-success">Update</button></td> 
                 <td ><button (click)="deleteEmployee(employee.empId)" class="btn btn-warning">Delete</button></td>              </tr>
-      <!-- } -->
+
     </tbody>
 
   </table>
