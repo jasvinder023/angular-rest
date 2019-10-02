@@ -2,6 +2,7 @@ let jwt = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqYXN2aW5kZXIiLCJleHAiOjE1Njk3NjkwMDMs
 
 let jwtData = jwt.split('.')[1]
 let decodedJwtJsonData = window.atob(jwtData)
+# this is rbac 
 let decodedJwtData = JSON.parse(decodedJwtJsonData)
 
 let rolesList= decodedJwtData.AUTHORITY
