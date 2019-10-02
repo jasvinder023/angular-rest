@@ -6,6 +6,7 @@ let decodedJwtData = JSON.parse(decodedJwtJsonData)
 
 let rolesList= decodedJwtData.AUTHORITY
 
+
 console.log('jwtData: ' + jwtData)
 console.log('decodedJwtJsonData: ' + decodedJwtJsonData)
 console.log('decodedJwtData: ' + decodedJwtData)
