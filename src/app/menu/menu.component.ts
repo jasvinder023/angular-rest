@@ -11,14 +11,12 @@ import { EmployeeDataService } from '../employee-data.service';
 export class MenuComponent implements OnInit {
   loggedInUserName=''
 
-//@Input("toChild") public loggedInUserName;
+
   constructor(private hardcodedAuthenticationService 
     : HardcodedAuthenticationService,private empDataService:EmployeeDataService) { }
 
   ngOnInit() {
-this.empDataService.receivedFilter.subscribe((param:string) =>{
-this.loggedInUserName=param;
-});
+
   }
 
 

@@ -15,14 +15,11 @@ import { RegisterComponent } from './register/register.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { ListEmployeeComponent } from './list-employee/list-employee.component';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { RbacAllowDirective } from './directive/rbac-allow.directive';
 import { Router } from '@angular/router';
-import { AuthorizationGuard } from './service/authorization.guard';
 
 
-export function createAdminOnlyGuard(router:Router) {
-  return new AuthorizationGuard(['ADMIN'],  router);
-}
+
+
 
 
 
@@ -37,8 +34,8 @@ export function createAdminOnlyGuard(router:Router) {
     RegisterComponent,
     EmployeeComponent,
     ListEmployeeComponent,
-    WelcomeComponent,
-    RbacAllowDirective
+    WelcomeComponent
+
   ],
   imports: [
     BrowserModule,
@@ -50,16 +47,8 @@ export function createAdminOnlyGuard(router:Router) {
      {provide: HTTP_INTERCEPTORS,
       useClass: HttpIntercepterBasicAuthService, multi: true,
 
-     },
-     {
-      provide: 'adminsOnlyGuard',
-      useFactory: createAdminOnlyGuard,
-      deps: [
-          
-          Router
-      ]
-
-  }
+     }
+       
 
   ],
   bootstrap: [AppComponent]
