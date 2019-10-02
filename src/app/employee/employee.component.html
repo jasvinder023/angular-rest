@@ -1,0 +1,60 @@
+<H1>Employee Management</H1>
+
+<div class="container">
+  
+  <form (ngSubmit)="!employeeForm.invalid && saveEmployee()" #employeeForm="ngForm">
+    <fieldset class="form-group">
+      <label>First Name</label>
+      <input type="text" #firstName="ngModel" 
+            [(ngModel)]="employee.firstName" class="form-control" 
+                name="firstName" required="required" >
+    </fieldset>
+
+    <fieldset>
+        <label>Last Name</label>
+      <input type="text" #lastName="ngModel" 
+            [(ngModel)]="employee.lastName" class="form-control" 
+                name="lastName" required="required" >
+    </fieldset>
+
+    <fieldset>
+        <label>Gender</label>
+<div class="col-xs-6">
+        <select name="gender" [(ngModel)]='employee.gender' class=''>
+          <option value='-'>Please select gender</option>
+          <option value='M'>Male</option>
+          <option value='F'>Female</option>
+        </select>
+      </div>
+      <!-- <input type="text" #email="ngModel" 
+            [(ngModel)]="employee.gender" class="form-control" 
+                name="gender" required="required" > -->
+                <label>Department</label>
+                <div class="col-xs-6">
+                        <select name="deptName" [(ngModel)]='employee.deptName' class=''>
+                          <option value='-'>Please select Department</option>
+                          <option value='tax'>Tax</option>
+                          <option value='it'>IT Advisory</option>
+                        </select>
+                      </div>
+                <!-- <label>DOB</label>
+      <input type="text" #email="ngModel" 
+            [(ngModel)]="employee.birthDate" class="form-control" 
+                name="birthDate" required="required" >
+
+                <label>Hire Date</label>
+      <input type="text" #email="ngModel" 
+            [(ngModel)]="employee.hireDate" class="form-control" 
+                name="hireDate" required="required" > -->
+    </fieldset>
+    <!-- <fieldset class="form-group">
+        <label>Target Date</label>
+        <input type="date" #targetDate="ngModel"
+        [ngModel]="todo.targetDate | date:'yyyy-MM-dd' "
+        (ngModelChange)="todo.targetDate = $event"
+        class="form-control" name="targetDate" required="required" >
+    </fieldset> -->
+<hr>
+    <button type="submit" class="btn btn-success">Save</button>
+  </form>  
+</div>
