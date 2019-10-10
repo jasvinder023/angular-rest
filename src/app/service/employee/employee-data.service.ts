@@ -1,7 +1,8 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Employee } from './list-employee/list-employee.component';
-import { EMPLOYEE_JPA_API_URL } from './app.constants';
+import { EMPLOYEE_JPA_API_URL } from '../../app.constants';
+import { Subject } from 'rxjs';
+import { Employee } from 'src/app/employee/employee-list/employee-list.component';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,10 @@ import { EMPLOYEE_JPA_API_URL } from './app.constants';
 export class EmployeeDataService {
       loggedInUser:string;
       
-      receivedFilter: EventEmitter<string>;
+  //    receivedFilter: EventEmitter<string>; 
+  // Sbject is more better than EventEmitter<>
+  //receivedFilter: Subject<string>;
+  receivedFilter: EventEmitter<string>;
 
   constructor(private httpClient: HttpClient) {
        this.receivedFilter = new EventEmitter<string>();
@@ -19,6 +23,7 @@ export class EmployeeDataService {
    sendUserNameEvent(loggedInUser: string): void {
     this.loggedInUser = loggedInUser;
     this.receivedFilter.emit(loggedInUser);
+   // this.receivedFilter.next(loggedInUser);
 }
 
   retrieveAllEmployees(username){

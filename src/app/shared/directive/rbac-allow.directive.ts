@@ -2,7 +2,7 @@ import {Directive, Input, OnDestroy, TemplateRef, ViewContainerRef} from "@angul
 
 import {Subscription} from "rxjs";
 import * as _ from 'lodash';
-import { TOKEN } from '../service/basic-authentication.service';
+import { TOKEN } from '../../service/auth/authentication.service';
 
 @Directive({
     selector:"[rbacAllow]"
@@ -69,8 +69,9 @@ export class RbacAllowDirective //implements OnDestroy {
         const isUserAllowed =
              _.intersection(this.allowedRoles, this.rolesList).length > 0;
 
-             console.log("Role name*******" +this.allowedRoles, this.rolesList)
-             //alert("is allowed => " +isUserAllowed)
+             console.log("---- Frontedn role---" +this.allowedRoles);
+             console.log("---- Backend role---" +this.rolesList);
+            // alert("is allowed => " +isUserAllowed)
 
          if (isUserAllowed) {
              this.viewContainer.createEmbeddedView(this.templateRef);

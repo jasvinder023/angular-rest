@@ -6,16 +6,16 @@
         
         <div class="navbar">
                 <ul class="navbar-nav">
-                        <li><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/welcome" class="nav-link">Home</a></li>
-                        <li><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/employee" class="nav-link">Employee</a></li>
-                        <li><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/register" class="nav-link">Create User</a></li>
+                        <li><a *ngIf="authService.isUserLoggedIn()" routerLink="/welcome" class="nav-link">Home</a></li>
+                        <li><a *ngIf="authService.isUserLoggedIn()" routerLink="/employee" class="nav-link">Employee</a></li>
+                        <li><a *ngIf="authService.isUserLoggedIn()" routerLink="/register" class="nav-link">Create User</a></li>
                     </ul>
                
               </div>
         <ul class="navbar-nav navbar-collapse justify-content-end">
-          <li ><span *ngIf="hardcodedAuthenticationService.isUserLoggedIn()" class="userColor">-{{loggedInUserName}}</span></li>
-                <li><a *ngIf="!hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a></li>
-                <li><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/logout" class="nav-link">Logout</a></li>
+          <li ><span *ngIf="authService.isUserLoggedIn()" class="userColor">-{{loggedInUserName}}</span></li>
+                <li><a *ngIf="!authService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a></li>
+                <li><a *ngIf="authService.isUserLoggedIn()" (click)="onLogOut()" class="nav-link">Logout</a></li>
         </ul>
     </nav>
 </header>

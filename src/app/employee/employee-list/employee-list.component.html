@@ -1,4 +1,3 @@
-
 <h1> Employee  Managememnt System </h1>
 
 <div class="alert alert-success" *ngIf='message'>{{message}}</div>
@@ -33,7 +32,7 @@
                 <td>{{employee.hireDate}} </td>
                 
                 
-                <td *rbacAllow="['MANAGER']"><button (click)="updateEmployee(employee.empId)" class="btn btn-success">Update</button></td> 
+                <td *rbacAllow="['MANAGER']"><button (click)="editEmployee(employee.empId)" class="btn btn-success">Edit</button></td> 
                 <td  *rbacAllow="['ADMIN']"><button (click)="deleteEmployee(employee.empId)" class="btn btn-warning">Delete</button></td>              </tr>
       <!-- } -->
     </tbody>
@@ -44,4 +43,9 @@
       <button (click)="addEmployee()" class="btn btn-success">Add</button>
   </div>
 
+</div>
+
+<div>
+
+    <router-outlet></router-outlet>
 </div>

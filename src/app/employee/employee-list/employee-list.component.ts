@@ -1,7 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { EmployeeDataService } from '../employee-data.service';
-import { Router } from '@angular/router';
-import { AUTHENTICATED_USER } from '../service/basic-authentication.service';
+import { Component, OnInit } from '@angular/core';
+import { AUTHENTICATED_USER } from 'src/app/service/auth/authentication.service';
+import { EmployeeDataService } from 'src/app/service/employee/employee-data.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 export class Department{
 
@@ -28,11 +28,11 @@ export class Employee{
   }
 }
 @Component({
-  selector: 'app-list-employee',
-  templateUrl: './list-employee.component.html',
-  styleUrls: ['./list-employee.component.css']
+  selector: 'app-employee-list',
+  templateUrl: './employee-list.component.html',
+  styleUrls: ['./employee-list.component.css']
 })
-export class ListEmployeeComponent implements OnInit {
+export class EmployeeListComponent implements OnInit {
 
   employees : Employee[];
   message: string;
@@ -42,7 +42,8 @@ export class ListEmployeeComponent implements OnInit {
  // @Output() public toParentUserName=new EventEmitter();
   constructor(
     private employeeDataService: EmployeeDataService,
-    private router: Router
+    private router: Router,
+    private activatedRoute:ActivatedRoute
   ) { }
  
   ngOnInit() {
@@ -63,8 +64,8 @@ export class ListEmployeeComponent implements OnInit {
 
   refreshEmployees(){
  //  alert("list emp1")
-    this.employeeDataService.retrieveAllEmployees(this.userName).subscribe(
-      response => {      
+    this.employeeDataService.retrieveAllEmployees(this.userName)
+    .subscribe(response => {      
         console.log(response);
         this.employees = response;
      //   alert("customer " +this.customers[0].firstName)
@@ -73,9 +74,9 @@ export class ListEmployeeComponent implements OnInit {
     )
   }
  
-  updateEmployee(id) {
+  editEmployee(id) {
     console.log(`update ${id}`)
-    this.router.navigate(['employee',id])
+    this.router.navigate(['employee',id,{relativeTo: this.activatedRoute}])
   }
 
   deleteEmployee(id){
@@ -89,6 +90,7 @@ export class ListEmployeeComponent implements OnInit {
   addEmployee() {
     this.router.navigate(['employee',-1])
   }
+
 
 
 }

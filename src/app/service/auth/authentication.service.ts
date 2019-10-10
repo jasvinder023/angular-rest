@@ -1,8 +1,8 @@
-import { API_URL } from './../app.constants';
+import { API_URL } from '../../app.constants';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {map} from 'rxjs/operators';
-import { User } from '../register/register.component';
+import { UserInfo } from '../../entity/user-info';
 
 
 export const TOKEN = 'token'
@@ -11,7 +11,7 @@ export const AUTHENTICATED_USER = 'authenticaterUser'
 @Injectable({
   providedIn: 'root'
 })
-export class BasicAuthenticationService {
+export class AuthenticationService {
 
   constructor(private http: HttpClient) { }
 
@@ -52,7 +52,7 @@ export class BasicAuthenticationService {
 
 
 
-  executeRegister(user:User){
+  executeRegister(user:UserInfo){
     return this.http.post(
               `${API_URL}/register/createUser/`,user
                 );
@@ -100,6 +100,9 @@ export class BasicAuthenticationService {
     sessionStorage.removeItem(TOKEN)
   }
 
+
+
+  
 }
 
 export class AuthenticationBean{
