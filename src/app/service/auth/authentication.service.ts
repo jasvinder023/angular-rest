@@ -36,23 +36,7 @@ export class AuthenticationService {
             sessionStorage.setItem(AUTHENTICATED_USER, username);
             sessionStorage.setItem(TOKEN, `Bearer ${data.token}`);
 
-
-          //  // add roles to sessionStorage here
-          //  let jwtToken=data.token;
-          //  let jwtData = jwtToken.split('.')[1]
-          //   let decodedJwtJsonData = window.atob(jwtData)
-          //   let decodedJwtData = JSON.parse(decodedJwtJsonData)
-
-          //   let rolesList= decodedJwtData.AUTHORITY
-
-          //   sessionStorage.setItem("role",rolesList);
-
-          //   console.log('jwtData: ' + jwtData)
-          //   console.log('decodedJwtJsonData: ' + decodedJwtJsonData)
-          //   console.log('decodedJwtData: ' + decodedJwtData)
-          //   console.log('Roles: ' + rolesList); 
-          //               return data;
-          }
+        }
         )
       );
   }

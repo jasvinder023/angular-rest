@@ -3,8 +3,7 @@
 <div class="alert alert-success" *ngIf='message'>{{message}}</div>
 <hr>
 <div>
-  <h3>Role Name: <span>{{roleName}}</span></h3>
-</div>
+  </div>
 <br>
 <div class="container">
   <table class="table">
@@ -17,12 +16,11 @@
         <th>DOB</th>
         <th>Hire Date</th>
         
-        <th *rbacAllow="['MANAGER']">Update</th>
-        <th *rbacAllow="['ADMIN']">Delete</th>
+        <th >Update</th>
+        <th >Delete</th>
       </tr>
     </thead>
     <tbody>
-      <!--   for (Todo todo: todos) {  -->
               <tr *ngFor="let employee of employees">
                 <td>{{employee.firstName}}</td>
                 <td>{{employee.lastName}}</td>
@@ -35,6 +33,9 @@
                 <td *rbacAllow="['MANAGER']"><button (click)="editEmployee(employee.empId)" class="btn btn-success">Edit</button></td> 
                 <td  *rbacAllow="['ADMIN']"><button (click)="deleteEmployee(employee.empId)" class="btn btn-warning">Delete</button></td>              </tr>
       <!-- } -->
+                <td ><button (click)="updateEmployee(employee.empId)" class="btn btn-success">Update</button></td> 
+                <td ><button (click)="deleteEmployee(employee.empId)" class="btn btn-warning">Delete</button></td>              </tr>
+
     </tbody>
 
   </table>

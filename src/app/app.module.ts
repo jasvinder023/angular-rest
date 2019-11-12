@@ -38,14 +38,10 @@ export function createAdminOnlyGuard(router:Router) {
     MenuComponent,
     FooterComponent,
     RegisterComponent,
-    EmployeeEditComponent,
-    EmployeeListComponent,
-    WelcomeComponent,
-    RbacAllowDirective,
-    RoleComponent,
-    AdminComponent,
-    UserListComponent,
-    UserEditComponent
+    //EmployeeComponent,
+    //ListEmployeeComponent,
+    WelcomeComponent
+
   ],
   imports: [
     BrowserModule,
@@ -62,16 +58,8 @@ export function createAdminOnlyGuard(router:Router) {
      {provide: HTTP_INTERCEPTORS,
       useClass: HttpIntercepterBasicAuthService, multi: true,
 
-     },
-     {
-      provide: 'adminsOnlyGuard',
-      useFactory: createAdminOnlyGuard,
-      deps: [
-          
-          Router
-      ]
-
-  }
+     }
+       
 
   ],
   bootstrap: [AppComponent]

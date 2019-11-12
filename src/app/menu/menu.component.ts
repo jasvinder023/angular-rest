@@ -12,6 +12,7 @@ import { Subscription } from 'rxjs';
 export class MenuComponent implements OnInit, OnDestroy {
   loggedInUserName=''
 
+
   loggedInUserSubscription: Subscription
 
 //@Input("toChild") public loggedInUserName;
@@ -25,6 +26,12 @@ export class MenuComponent implements OnInit, OnDestroy {
    this.loggedInUserName=param;
    console.log("log user name------"+param)
 });
+
+  constructor(private hardcodedAuthenticationService 
+    : HardcodedAuthenticationService,private empDataService:EmployeeDataService) { }
+
+  ngOnInit() {
+
   }
 
   ngOnDestroy(){

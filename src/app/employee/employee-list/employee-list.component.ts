@@ -19,10 +19,7 @@ export class Employee{
     public birthDate:string,
     public hireDate:string,
 
-    //employee has departments
-    //public department:Department,
-
-    public deptName:String,
+       public deptName:String,
   ){
 
   }
@@ -39,7 +36,7 @@ export class EmployeeListComponent implements OnInit {
   roleName:string;
   userName=sessionStorage.getItem(AUTHENTICATED_USER);
 
- // @Output() public toParentUserName=new EventEmitter();
+ 
   constructor(
     private employeeDataService: EmployeeDataService,
     private router: Router,
@@ -56,18 +53,16 @@ export class EmployeeListComponent implements OnInit {
   }
 
 
-  //get isAdmin() {
-  //  alert("role nnaa" +this.roleName+ "is true " +this.roleName === 'Admin')
-//     return this.roleName === 'ADMIN';
-// }
-
   refreshEmployees(){
  //  alert("list emp1")
     this.employeeDataService.retrieveAllEmployees(this.userName)
     .subscribe(response => {      
+
+    this.employeeDataService.retrieveAllEmployees(this.userName).subscribe(
+      response => {      
         console.log(response);
         this.employees = response;
-     //   alert("customer " +this.customers[0].firstName)
+
         console.log(response);
       }
     )
