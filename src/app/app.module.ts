@@ -18,10 +18,17 @@ import { RoleComponent } from './register/role/role.component';
 import { RbacAllowDirective } from './shared/directive/rbac-allow.directive';
 import { EmployeeEditComponent } from './employee/employee-edit/employee-edit.component';
 import { EmployeeListComponent } from './employee/employee-list/employee-list.component';
+import { AdminComponent } from './admin/admin.component';
+import { UserListComponent } from './admin/user-list/user-list.component';
+import * as $ from "jquery";
+import { UserEditComponent } from './admin/user-edit/user-edit.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 
 export function createAdminOnlyGuard(router:Router) {
-  return new AuthorizationGuard(['ADMIN'],  router);
+  return new AuthorizationGuard(['ADMIN','MANAGER'],  router);
 }
 @NgModule({
   declarations: [
@@ -35,14 +42,21 @@ export function createAdminOnlyGuard(router:Router) {
     EmployeeListComponent,
     WelcomeComponent,
     RbacAllowDirective,
-    RoleComponent
+    RoleComponent,
+    AdminComponent,
+    UserListComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    FlexLayoutModule
+    
   ],
   providers: [
      {provide: HTTP_INTERCEPTORS,

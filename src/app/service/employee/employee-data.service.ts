@@ -8,25 +8,13 @@ import { Employee } from 'src/app/employee/employee-list/employee-list.component
   providedIn: 'root'
 })
 export class EmployeeDataService {
-      loggedInUser:string;
       
-  //    receivedFilter: EventEmitter<string>; 
-  // Sbject is more better than EventEmitter<>
-  //receivedFilter: Subject<string>;
-  receivedFilter: EventEmitter<string>;
-
+  
   constructor(private httpClient: HttpClient) {
-       this.receivedFilter = new EventEmitter<string>();
 
    }
 
-   sendUserNameEvent(loggedInUser: string): void {
-    this.loggedInUser = loggedInUser;
-    this.receivedFilter.emit(loggedInUser);
-   // this.receivedFilter.next(loggedInUser);
-}
-
-  retrieveAllEmployees(username){
+   retrieveAllEmployees(username){
    return this.httpClient.get<Employee[]>(`${EMPLOYEE_JPA_API_URL}/${username}/list`);
    
 

@@ -1,15 +1,18 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { AUTHENTICATED_USER, AuthenticationService } from '../service/auth/authentication.service';
 import { EmployeeDataService } from '../service/employee/employee-data.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent implements OnInit, OnDestroy {
   loggedInUserName=''
+
+  loggedInUserSubscription: Subscription
 
 //@Input("toChild") public loggedInUserName;
   constructor(
@@ -18,9 +21,14 @@ export class MenuComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-   this.empDataService.receivedFilter.subscribe((param:string) =>{
+   this.loggedInUserSubscription=this.authService.receivedFilter.subscribe((param:string) =>{
    this.loggedInUserName=param;
+   console.log("log user name------"+param)
 });
+  }
+
+  ngOnDestroy(){
+    this.loggedInUserSubscription.unsubscribe();
   }
 
   onLogOut(){

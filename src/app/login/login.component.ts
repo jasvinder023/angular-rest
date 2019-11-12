@@ -10,7 +10,7 @@ import { AuthenticationService } from '../service/auth/authentication.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  @ViewChild('f', { static: false }) loginForm: NgForm;
+  @ViewChild('loginForm', { static: false }) loginForm: NgForm;
    username = ''
    password = ''
    //errorMessage = 'Invalid Credentials'
@@ -27,22 +27,22 @@ export class LoginComponent implements OnInit {
   }
 
 
-  handleJWTAuthLogin() {
-    console.log(this.loginForm)
+  onLoginSubmit() {
+   // console.log(this.loginForm)
    this.username=this.loginForm.value.username;
    this.password=this.loginForm.value.password;
-   console.log("User name ==> " +this.username)
-   console.log("Password ==> " +this.password)
+   //console.log("User name ==> " +this.username)
+   //console.log("Password ==> " +this.password)
     this.authService.executeJWTAuthenticationService(this.username, this.password)
         .subscribe(
           data => {
-            console.log(data)
-            console.log("-------------------------------")
-            this.router.navigate(['employee'])
+         //   console.log(data)
+           // console.log("-------------------------------")
+            this.router.navigate(['welcome'])
             this.invalidLogin = false      
           },
           error => {
-            console.log(error.error)
+            console.log(error)
               this.invalidLogin = true;
               this.errorMessage=error.error
           }

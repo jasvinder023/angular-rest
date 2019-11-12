@@ -49,9 +49,9 @@ export class RbacAllowDirective //implements OnDestroy {
 
           ///  sessionStorage.setItem("role",rolesList);
 
-            console.log('jwtData: ' + jwtData)
-            console.log('decodedJwtJsonData: ' + decodedJwtJsonData)
-            console.log('decodedJwtData: ' + decodedJwtData)
+           // console.log('jwtData: ' + jwtData)
+            //console.log('decodedJwtJsonData: ' + decodedJwtJsonData)
+            //console.log('decodedJwtData: ' + decodedJwtData)
             console.log('Roles: ' + this.rolesList); 
 
 

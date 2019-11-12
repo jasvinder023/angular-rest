@@ -29,6 +29,7 @@ export class AuthorizationGuard implements  CanActivate {
             let decodedJwtData = JSON.parse(decodedJwtJsonData)
 
              this.rolesList= decodedJwtData.AUTHORITY
+             console.log("Backend role "+this.rolesList)
             if(_.intersection(this.allowedRoles, this.rolesList).length > 0 ){
                // alert("true")
                 return true

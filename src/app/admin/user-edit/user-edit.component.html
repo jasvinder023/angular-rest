@@ -1,0 +1,53 @@
+<H1>User Edit/create</H1>
+
+<div class="container">
+  
+  <form (ngSubmit)="!userInfoForm.invalid && saveAndUpdateUser()" #userInfoForm="ngForm">
+    <fieldset class="form-group">
+      <label>User Name</label>
+      <input type="text" #username="ngModel" 
+            [(ngModel)]="userInfoData.username" class="form-control" 
+              id="username" name="username" required="required" >
+    </fieldset>
+    <fieldset *ngIf="saveMode">
+        <label>Password</label>
+      <input type="password" #password="ngModel" 
+            [(ngModel)]="userInfoData.password" class="form-control" 
+                name="password" required="required" >
+    </fieldset>
+    <fieldset>
+            <label>First Name</label>
+          <input type="text" #firstName="ngModel" 
+                [(ngModel)]="userInfoData.firstName" class="form-control" 
+                    name="firstName" required="required" >
+        </fieldset>
+        
+    
+       
+    <fieldset>
+        <label>Last Name</label>
+      <input type="text" #lastName="ngModel" 
+            [(ngModel)]="userInfoData.lastName" class="form-control" 
+                name="lastName" required="required" >
+    </fieldset>
+
+    <fieldset>
+        <label>Creation Date</label>
+<div class="col-xs-6">
+        <span>------</span>
+      </div>
+        <label>Roles</label>
+                <div class="col-xs-6">
+                        <select multiple  name="roles" [(ngModel)]="userInfoData.roles">
+                                <option *ngFor="let role of roleList" [ngValue]="role">
+                                 {{ role.name }}
+                                </option>
+                              </select> 
+                
+                      </div>
+                   </fieldset>
+   
+<hr>
+    <button type="submit" class="btn btn-success">Save</button>
+  </form>  
+</div>

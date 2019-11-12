@@ -1,6 +1,6 @@
 import { API_URL } from '../../app.constants';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import {map} from 'rxjs/operators';
 import { UserInfo } from '../../entity/user-info';
 
@@ -13,7 +13,14 @@ export const AUTHENTICATED_USER = 'authenticaterUser'
 })
 export class AuthenticationService {
 
-  constructor(private http: HttpClient) { }
+  //    receivedFilter: EventEmitter<string>; 
+  // Sbject is more better than EventEmitter<>
+  //receivedFilter: Subject<string>;
+  receivedFilter: EventEmitter<String>;
+
+  constructor(private http: HttpClient) { 
+       this.receivedFilter = new EventEmitter<string>();
+  }
 
 
   // Useful for JWT authentication
@@ -100,7 +107,10 @@ export class AuthenticationService {
     sessionStorage.removeItem(TOKEN)
   }
 
-
+  sendUserNameEvent(loggedInUser: string): void {
+    this.receivedFilter.emit(loggedInUser);
+   // this.receivedFilter.next(loggedInUser);
+}
 
   
 }

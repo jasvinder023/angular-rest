@@ -7,8 +7,9 @@
         <div class="navbar">
                 <ul class="navbar-nav">
                         <li><a *ngIf="authService.isUserLoggedIn()" routerLink="/welcome" class="nav-link">Home</a></li>
-                        <li><a *ngIf="authService.isUserLoggedIn()" routerLink="/employee" class="nav-link">Employee</a></li>
-                        <li><a *ngIf="authService.isUserLoggedIn()" routerLink="/register" class="nav-link">Create User</a></li>
+                        <li ><a *ngIf="authService.isUserLoggedIn()" routerLink="/employee" class="nav-link">Employee</a></li>
+                        <li  *ngIf="authService.isUserLoggedIn()">
+                            <a *rbacAllow="['ADMIN','MANAGER']" routerLink="/admin" class="nav-link">Admin</a></li>
                     </ul>
                
               </div>

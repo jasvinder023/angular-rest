@@ -49,7 +49,6 @@ export class EmployeeListComponent implements OnInit {
   ngOnInit() {
   // alert("list comp");
     //this.toParentUserName.emit(this.userName);
-    this.employeeDataService.sendUserNameEvent(this.userName);
     this.roleName=sessionStorage.getItem("role");
     console.log("Fetch role=> " +this.roleName)
 

@@ -1,47 +1,33 @@
+<section>
+<form fxLayout ="column" fxLayoutAlign="center center"(ngSubmit)="onLoginSubmit()" #loginForm="ngForm"> 
 
-<br>
-<br>
-<div class="container">
-		<div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
-	<div class="card card-container">
-	  
-	  <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
-	  <p id="profile-name" class="profile-name-card"></p>
-
-  <!--Template driven approach-->
- <form (ngSubmit)="handleJWTAuthLogin()" #f="ngForm"> 
-		<div class="form-group">
-		  <label for="username">Username</label>
-		  <input
-		   type="text"
-		   id="username"
-		   class="form-control"
-		   ngModel
-		   name="username" 
-		   required />
-		
-		</div>
-		<div class="form-group" >
-		  <label for="password">Password</label>
-		  <input 
-		   type="password"
-		   class="form-control" 
-		   name="password" 
-		   ngModel
-		   required 
-		   #pass="ngModel"/>
-		    <!-- <span class="help-block" *ngIf="pass.touched">Please enter a password</span>  -->
-
-		  <!-- <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div> -->
-		</div>
-		
-	   <button 
-		class="btn btn-lg btn-primary btn-block btn-signin" 
-		type="submit"
-		[disabled]="!f.valid">Sign in
-	   </button>
+	 <mat-form-field>
+		<input matInput
+		placeholder="User Name"
+		type="text"
+		id="username"
+		ngModel
+		name="username" 
+		required 
+		#userNameInput="ngModel"/>
+	 </mat-form-field>
+	 <mat-error *ngIf="userNameInput.hasError('required')"></mat-error>
+     <mat-form-field hintLabel="Should be at least 5 character long">
+	  <input matInput
+	  placeholder="Password"
+	   type="password"
+	   name="password" 
+	   ngModel
+	   required 
+	   minlength="5"
+	   #pass="ngModel"/>
+		<mat-hint align="end">{{pass.value?.length}} / 5</mat-hint>
+	</mat-form-field>
+	
+   <button 
+	mat-raised-button color="primary"
+	type="submit"
+	[disabled]="!loginForm.valid">Sign in
+   </button>
 </form >
-		<a [routerLink]="['/register']" class="btn btn-link">Create new Account!</a>
-	</div><!-- /card-container -->
-  </div><!-- /container -->
-  
+</section>
